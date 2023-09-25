@@ -43,3 +43,23 @@ std::pair<int, int> min_max_vec(const std::vector<int> vec) {
 	}
 	return res;
 }
+void push_back_mass_to_vec_sort(std::vector<int>& vec, int* mass, int mass_size) { 
+	//в интернете прочитал, что отловить ошибку выхода за границы массива
+	//отловить и обрабоать это отдельная нетривиальная задача, поэтому тут обработки такого случая нет
+	for (int i = 0; i < mass_size; i++) {
+		vec.push_back(mass[i]);
+	}
+	std::sort(vec.begin(), vec.end());
+}
+void null_low_vec(std::vector<int>& vec, int a) {
+	for (auto i = vec.begin(); i < vec.end(); i++) {
+		if (*i < a) { *i = 0; }
+	}
+}
+std::vector<int> elem_higer_vec(std::vector<int> vec, int a) {
+	std::vector<int> res;
+	for (auto i = vec.begin(); i < vec.end(); i++) {
+		if (*i > a) { res.push_back(*i); }
+	}
+	return res;
+}

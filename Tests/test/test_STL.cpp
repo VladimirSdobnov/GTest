@@ -1,46 +1,37 @@
 #include "../STL/STL.h"
 #include "../qtest/gtest.h"
 
-TEST(test_add, can_min_max) {
+TEST(test_add, not_null_vec) {
 	// Arrange
-	std::vector<int> a;
-	std::pair<int, int> res, true_res;
+	std::vector<int> a, res;
+	int c = 8;
 	for (int i = 0; i < 15; i++) {
 		a.push_back(i);
 	}
+	res = { 9, 10, 11, 12, 13, 14};
 	// Act
-	res = min_max_vec(a);
-	true_res = { 0, 14 };
 	// Assert
-	EXPECT_EQ(res, true_res);
+	EXPECT_EQ(elem_higer_vec(a, c), res);
 }
-TEST(test_add, can_min_max2) {
+TEST(test_add, null_vec) {
 	// Arrange
-	std::vector<int> a;
-	std::pair<int, int> res, true_res;
-	for (int i = 0; i < 30; i++) {
-		a.push_back(2 * i);
-	}
+	std::vector<int> a, res;
+	int c = 8;
+	res = {};
 	// Act
-	res = min_max_vec(a);
-	true_res = { 0, 58 };
 	// Assert
-	EXPECT_EQ(res, true_res);
+	EXPECT_EQ(elem_higer_vec(a, c), res);
 }
-TEST(test_add, can_min_max3) {
+TEST(test_add, not_elem) {
 	// Arrange
-	std::vector<int> a;
-	std::pair<int, int> res, true_res;
-	int min = INT_MAX, max = INT_MIN;
-	for (int i = 0; i < 17; i++) {
-		a.push_back(i * pow(-1, i) * 3);
-		if (a[i] < min) { min = a[i]; }
-		if (a[i] > max) { max = a[i]; }
+	std::vector<int> a, res;
+	for (int i = 0; i < 15; i++) {
+		a.push_back(i);
 	}
+	int c = 20;
+	res = {};
 	// Act
-	res = min_max_vec(a);
-	true_res = { min, max };
 	// Assert
-	EXPECT_EQ(res, true_res);
+	EXPECT_EQ(elem_higer_vec(a, c), res);
 }
 
