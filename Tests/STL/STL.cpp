@@ -63,3 +63,13 @@ std::vector<int> elem_higer_vec(std::vector<int> vec, int a) {
 	}
 	return res;
 }
+void blend_vec(std::vector<int> &vec) {
+	srand(time(0));
+	for (auto i = vec.begin(); i < vec.end(); i++) {
+		auto x = vec.begin() + rand() % (vec.begin() - vec.end() + 1);
+		int c = *x;
+		*x = *i;
+		*i = c;
+	}
+}
+//for (auto i = vec.begin(); i < vec.end(); i++) { std::cout << *i << " "; }
