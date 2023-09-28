@@ -1,24 +1,20 @@
 #include "STL.h"
 void null_vec(std::vector<int> &vec) {
+	int i = 0;
+	while (i < vec.size()) {
+		vec[i] = 0;
+		i++;
+	}
 	if (vec.size() < 20) {
-		int i = 0;
-		while (i < vec.size()) {
-			vec[i] = 0;
-			i++;
-		}
 		while (i < 20) {
 			vec.push_back(0);
 			i++;
 		}
 	}
 	else {
-		int i = 0;
-		while (i < 20) {
-			vec[i] = 0;
-			i++;
-		}
-		while (i < vec.size()) {
+		while (i > 20) {
 			vec.pop_back();
+			i--;
 		}
 	}
 }
@@ -73,3 +69,54 @@ void blend_vec(std::vector<int> &vec) {
 	}
 }
 //for (auto i = vec.begin(); i < vec.end(); i++) { std::cout << *i << " "; }
+void del_higer_vec(std::vector<int>& vec, int b) {
+	for (auto i = 0; i < vec.size(); i++) {
+		if (vec[i] > b) {
+			vec.erase(vec.begin() + i);
+			i--;
+		}
+	}
+}
+int func_vec(std::vector<int>& vec) {
+	if (vec.size() % 2 == 1) {
+		vec.pop_back();
+		return vec.size();
+	}
+	else {
+		for (int i = 0; i < vec.size() / 2; i++) {
+			std::swap(vec[i], vec[vec.size() - i - 1]);
+		}
+		return vec.size();
+	}
+}
+void clear_vec(std::vector<int>& vec) { vec.clear(); }
+
+void add_mass_list(std::list<int>& list, int* mass, int mass_size) {
+	for (int i = 0; i < mass_size; i++) {
+		list.push_back(mass[i]);
+	}
+}
+std::vector<int> n_vector_list(std::list<int>& list, int n) {
+	if (n - 1 > list.size()) { throw 0; }
+	else {
+		std::vector<int> res;
+		auto list_i = list.begin();
+		for (int i = 0; i < n; i++) {
+			res.push_back(*list_i);
+			std::advance(list_i, 1);
+		}
+		return res;
+	}
+}
+void del_elem_list(std::list<int> &list, int pos) {
+	if (pos - 1 > list.size()) { throw 0; }
+	else {
+		auto i = list.begin();
+		if(pos > 0){ 
+			std::advance(i, pos);
+			list.erase(i);
+		}
+		else { list.pop_front(); }
+		
+	}
+}
