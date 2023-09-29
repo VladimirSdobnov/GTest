@@ -106,7 +106,7 @@ TEST(test_higer, not_null_vec) {
 	// Assert
 	EXPECT_EQ(elem_higer_vec(a, c), b);
 }
-TEST(test_higer, null_vec) {
+TEST(test_higer, can_null_vec) {
 	// Arrange
 	std::vector<int> a, b;
 	int c = 8;
@@ -115,7 +115,7 @@ TEST(test_higer, null_vec) {
 	// Assert
 	EXPECT_EQ(elem_higer_vec(a, c), b);
 }
-TEST(test_higer, not_elem) {
+TEST(test_higer, can_not_elem) {
 	// Arrange
 	std::vector<int> a, b;
 	int c = 20;
@@ -307,4 +307,99 @@ TEST(test_del_elem_list, can_del_elem_hig_size) {
 	// Act
 	// Assert
 	EXPECT_ANY_THROW(del_elem_list(a, c));
+}
+TEST(test_del_elem_list, can_del_NULL_LIST) {
+	// Arrange
+	std::list<int> a;
+	int c = 20;
+	// Act
+	// Assert
+	EXPECT_ANY_THROW(del_elem_list(a, c));
+}
+TEST(test_rand_LIST, can_rand_LIST) {
+	// Arrange
+	std::list<int> a, b;
+	for (int i = 0; i < 15; i++) {
+		a.push_back(i);
+		b.push_back(i);
+	}
+	// Act
+	// Assert
+	EXPECT_NO_THROW(change_three_pos_list(a));
+	EXPECT_NE(a, b);
+}
+TEST(test_rand_LIST, can_rand_null_LIST) {
+	// Arrange
+	std::list<int> a;
+	// Act
+	// Assert
+	EXPECT_ANY_THROW(change_three_pos_list(a));
+}
+TEST(test_del_recur, can_del_recur) {
+	// Arrange
+	std::list<int> a, b;
+	for (int i = 0; i < 15; i++) {
+		a.push_back(i);
+		a.push_back(i);
+		b.push_back(i);
+	}
+	// Act
+	del_recuring_list(a);
+	// Assert
+	EXPECT_EQ(a, b);
+}
+TEST(test_del_recur, can_del_recur_null_list) {
+	// Arrange
+	std::list<int> a, b;
+	// Act
+	del_recuring_list(a);
+	// Assert
+	EXPECT_EQ(a, b);
+}
+TEST(test_del_recur, can_del_not_recur) {
+	// Arrange
+	std::list<int> a, b;
+	for (int i = 0; i < 15; i++) {
+		a.push_back(i);
+		b.push_back(i);
+	}
+	// Act
+	del_recuring_list(a);
+	// Assert
+	EXPECT_EQ(a, b);
+}
+TEST(test_del_recur, can_del_recur_2) {
+	// Arrange
+	std::list<int> a, b;
+	for (int i = 0; i < 15; i++) {
+		a.push_back(0);
+	}
+	b = { 0 };
+	// Act
+	del_recuring_list(a);
+	// Assert
+	EXPECT_EQ(a, b);
+}
+
+TEST(test_reverse_list, can_reverse_list) {
+	// Arrange
+	std::list<int> a, b;
+	for (int i = 0; i < 15; i++) {
+		a.push_back(i);
+	}
+	b = { 14, 13, 12, 11, 10, 9 , 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+	// Act
+	reverse_lisr_stack(a);
+	// Assert
+	EXPECT_EQ(a, b);
+}
+TEST(test_print_stack, can_print_stack) {
+	// Arrange
+	std::stack<int> a;
+	for (int i = 0; i < 15; i++) {
+		a.push(i);
+	}
+	// Act
+	// Assert
+	EXPECT_NO_THROW(print_stack(a));
 }

@@ -4,6 +4,7 @@
 #include <time.h>
 #include <algorithm>
 #include <list>
+#include <stack>
 
 void null_vec(std::vector<int> &vec);
 void random_vec(std::vector<int>& vec);
@@ -19,3 +20,9 @@ void clear_vec(std::vector<int>& vec);
 void add_mass_list(std::list<int>& list, int* mass, int mass_size);
 std::vector<int> n_vector_list(std::list<int>& list, int n);
 void del_elem_list(std::list<int>& list, int pos);
+void change_three_pos_list(std::list<int>& list);
+bool in_vec(std::vector<int> vec, int a);
+void del_recuring_list(std::list<int>& list);
+
+void reverse_lisr_stack(std::list<int>& list);
+void print_stack(std::stack<int> stack);

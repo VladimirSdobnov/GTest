@@ -70,7 +70,7 @@ void blend_vec(std::vector<int> &vec) {
 }
 //for (auto i = vec.begin(); i < vec.end(); i++) { std::cout << *i << " "; }
 void del_higer_vec(std::vector<int>& vec, int b) {
-	for (auto i = 0; i < vec.size(); i++) {
+	for (int i = 0; i < vec.size(); i++) {
 		if (vec[i] > b) {
 			vec.erase(vec.begin() + i);
 			i--;
@@ -109,7 +109,7 @@ std::vector<int> n_vector_list(std::list<int>& list, int n) {
 	}
 }
 void del_elem_list(std::list<int> &list, int pos) {
-	if (pos - 1 > list.size()) { throw 0; }
+	if (pos > list.size()) { throw 0; }
 	else {
 		auto i = list.begin();
 		if(pos > 0){ 
@@ -119,4 +119,65 @@ void del_elem_list(std::list<int> &list, int pos) {
 		else { list.pop_front(); }
 		
 	}
+}
+void change_three_pos_list(std::list<int>& list) {
+	if (list.size() < 3) { throw 0; }
+	else {
+		srand(time(0));
+		std::vector<int> pos_vec;
+		for (int i = 0; i < 3; i++) {
+			auto list_i = list.begin();
+			int pos = rand() % list.size();
+			while (in_vec(pos_vec, pos)) {
+				pos = rand() % list.size();
+			}
+			pos_vec.push_back(pos);
+			std::advance(list_i, pos);
+			*list_i = -100 + rand() % 201;
+		}
+	}
+}
+bool in_vec(std::vector<int> vec, int a) {
+	for (auto i = vec.begin(); i < vec.end(); i++) {
+		if (*i == a) {
+			return true;
+		}
+	}
+	return false;
+}
+void del_recuring_list(std::list<int>& list) {
+	std::vector<int> elements;
+	
+	for (int i = 0; i < list.size(); i++)
+	{
+		auto list_i = list.begin();
+		std::advance(list_i, i);
+		if (in_vec(elements, *list_i)) {
+			list.erase(list_i);
+			i--;
+		}
+		else {
+			elements.push_back(*list_i);
+		}
+	}
+}
+
+void reverse_lisr_stack(std::list<int>& list) {
+	std::stack<int> tmp;
+	while (list.size() > 0) {
+		tmp.push(list.front());
+		list.pop_front();
+	}
+	while (tmp.size() != 0) {
+		list.push_back(tmp.top());
+		tmp.pop();
+	}
+}
+void print_stack(std::stack<int> stack) {
+	std::cout << "\n|   |\n";
+	while (stack.size() > 0) {
+		std::cout << "| " << stack.top() << " |\n";
+		stack.pop();
+	}
+	std::cout << " --- \n";
 }
