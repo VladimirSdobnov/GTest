@@ -1,3 +1,7 @@
 ﻿  STL.cpp
-C:\Users\vovaf\source\repos\Tests\STL\STL.cpp(26,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\vovaf\source\repos\Tests\STL\STL.cpp(22,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\vovaf\source\repos\Tests\STL\STL.cpp(63,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\vovaf\source\repos\Tests\STL\STL.cpp(83,18): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vovaf\source\repos\Tests\STL\STL.cpp(89,18): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vovaf\source\repos\Tests\STL\STL.cpp(126,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
   STL.vcxproj -> C:\Users\vovaf\source\repos\Tests\x64\Debug\STL.lib
